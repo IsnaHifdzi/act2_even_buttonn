@@ -29,26 +29,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 nama = edemail.getText().toString();
                 password=edpassword.getText().toString();
-                if (nama.equals("") || password.equals("")) {
-                    Toast.makeText(MainActivity.this, "Nama User atau Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    if (nama.equals("isnahifdzi@gmail.com") && password.equals("Hifdzi")){
-                        Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        if (password.equals("Hifdzi")) {
-                            Toast.makeText(MainActivity.this, "Email Salah", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            if (nama.equals("isnahifdzi@gmail.com")) {
-                                Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(MainActivity.this, "Email dan Password Salah!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
+
+                String email = "IsnaHifdzi";
+                String pass ="hifdzi";
+
+                    if (nama.equals(email)&&password.equals(pass)) {
+                        Toast t = Toast.makeText(getApplicationContext(), "Login Sukses", Toast.LENGTH_LONG);
+                        t.show();
+                        Bundle b = new Bundle();
+                        b.putString("a", nama.trim());
+                        b.putString("b", password.trim());
+                        Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+                        i.putExtras(b);
+                        startActivity(i);
+                    }else{
+                        Toast t = Toast.makeText(getApplicationContext(),"Login Gagal",Toast.LENGTH_LONG);
+                        t.show();
                 }
             }
         });
